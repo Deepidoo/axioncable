@@ -27,7 +27,7 @@ config :application, ApplicationWeb.Endpoint,
         ]}
       ]
     ],
-    subprotocols: ["axioncable-v1-json"]
+    subprotocols: ["actioncable-v1-json"]
 ```
 
 It will redirect every url ending by "/cable" to Cowboy Websocket Handler.

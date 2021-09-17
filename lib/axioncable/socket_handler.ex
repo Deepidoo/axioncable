@@ -1,7 +1,7 @@
 defmodule Axioncable.SocketHandler do
   @moduledoc """
   This module handles:
-  - Socket initialization with axioncable protocol. (Switching protocol)
+  - Socket initialization with actioncable protocol. (Switching protocol)
   - Message from client
   - Message to client
   This module DON'T handles token in url (like example.com/cable?token=aaa)
@@ -23,8 +23,8 @@ defmodule Axioncable.SocketHandler do
       end
 
       def search_subprotocol([ head | tail ], req, opts) do
-        if head == "axioncable-v1-json" do
-          req_updated = :cowboy_req.set_resp_header("sec-websocket-protocol", "axioncable-v1-json", req)
+        if head == "actioncable-v1-json" do
+          req_updated = :cowboy_req.set_resp_header("sec-websocket-protocol", "actioncable-v1-json", req)
           opts = %{"pid" => req[:pid], "channel" => []}
           {:cowboy_websocket, req_updated, opts}
         else

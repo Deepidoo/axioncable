@@ -22,7 +22,7 @@ config :axioncable, AxioncableWeb.Endpoint,
       ]}
     ]
   ],
-  subprotocols: ["axioncable-v1-json"]
+  subprotocols: ["actioncable-v1-json"]
 
 # Configures Elixir's Logger
 config :logger, :console,
