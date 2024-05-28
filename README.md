@@ -100,6 +100,7 @@ Then install the version specified in `.tool-versions`
 asdf install
 ```
 
+The code is formatted using `mix format`
 
 ### Improvement
 

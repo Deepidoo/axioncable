@@ -49,7 +49,7 @@ defmodule Axioncable.MixProject do
     [
       {:jason, "~> 1.0"},
       {:plug_cowboy, "~> 2.1"},
-      {:ex_doc, "~> 0.19", only: :dev, runtime: false},
+      {:ex_doc, "~> 0.19", only: :dev, runtime: false}
     ]
   end
 end
