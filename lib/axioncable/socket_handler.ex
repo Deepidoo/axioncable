@@ -44,25 +44,25 @@ defmodule Axioncable.SocketHandler do
 
       def websocket_info(%{"action" => action, "args" => args, "channel" => channel, "id" => id}, state) do
         resp = %{"identifier" => "{\"channel\":\"#{channel}\",\"id\":#{id}}", "message" => %{"action" => action, "args" => args}}
-        message = Poison.encode!(resp)
+        message = Jason.encode!(resp)
         {:reply, {:text, message}, state}
       end
 
       def websocket_info(%{"action" => action, "channel" => channel, "id" => id}, state) do
         resp = %{"identifier" => "{\"channel\":\"#{channel}\",\"id\":#{id}}", "message" => %{"action" => action}}
-        message = Poison.encode!(resp)
+        message = Jason.encode!(resp)
         {:reply, {:text, message}, state}
       end
 
       def websocket_info(%{"action" => action, "args" => args, "channel" => channel}, state) do
         resp = %{"identifier" => "{\"channel\":\"#{channel}\"}", "message" => %{"action" => action, "args" => args}}
-        message = Poison.encode!(resp)
+        message = Jason.encode!(resp)
         {:reply, {:text, message}, state}
       end
 
       def websocket_info(%{"action" => action, "channel" => channel}, state) do
         resp = %{"identifier" => "{\"channel\":\"#{channel}\"}", "message" => %{"action" => action}}
-        message = Poison.encode!(resp)
+        message = Jason.encode!(resp)
         {:reply, {:text, message}, state}
       end
 
@@ -74,7 +74,7 @@ defmodule Axioncable.SocketHandler do
 
       #Client to server
       def websocket_handle({:text, message}, state) do
-        message = Poison.decode!(message)
+        message = Jason.decode!(message)
         case message["command"] do
           "subscribe" ->
             subscription(message, state)
@@ -90,9 +90,9 @@ defmodule Axioncable.SocketHandler do
       def subscription(message, state) do
         if message["identifier"] do
           response = %{"identifier" => message["identifier"], "type" => "confirm_subscription"}
-          response = Poison.encode!(response)
+          response = Jason.encode!(response)
           channel = message["identifier"]
-          channel = Poison.decode!(channel)
+          channel = Jason.decode!(channel)
           name = name_channel(channel)
           channel0 = state["channel"]
           state = Map.put(state, "channel", channel0 ++ [name])
