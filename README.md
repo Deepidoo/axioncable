@@ -1,5 +1,7 @@
 # Axioncable
 
+[![Build Status](https://github.com/Deepidoo/axioncable/workflows/elixir/badge.svg)](https://github.com/Deepidoo/axioncable/actions)
+
 ## Installation
 
 ### - 1) Add the `:axioncable` dependency to your mix.exs file
