@@ -83,6 +83,25 @@ else (subscription in JS with channel only)
 
     Broadcast message to all subscriber from given channel. 
 
+### Development
+
+This project use asdf with a `tool-versions`.
+
+Install [asdf](https://asdf-vm.com/guide/getting-started.html) and the differents plugins.
+
+```sh
+asdf plugin add erlang https://github.com/asdf-vm/asdf-erlang.git
+asdf plugin-add elixir https://github.com/asdf-vm/asdf-elixir.git
+```
+
+Then install the version specified in `.tool-versions`
+
+```sh
+asdf install
+```
+
+The code is formatted using `mix format`
+
 ### Improvement
 
 - Do not hesitate to perform pull request, this is a first version and there are a lot of things that need to be improved
