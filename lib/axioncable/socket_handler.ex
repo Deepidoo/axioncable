@@ -6,6 +6,7 @@ defmodule Axioncable.SocketHandler do
   - Message to client
   This module DON'T handles token in url (like example.com/cable?token=aaa)
   """
+require Logger
 
   defmacro __using__(_opts) do
     quote do
@@ -22,6 +23,7 @@ defmodule Axioncable.SocketHandler do
       end
 
       def search_subprotocol([head | tail], req, opts) do
+        Logger.info(head)
         if head == "actioncable-v1-json" do
           req_updated =
             :cowboy_req.set_resp_header("sec-websocket-protocol", "actioncable-v1-json", req)
